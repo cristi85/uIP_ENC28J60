@@ -84,12 +84,12 @@ void Serial_PrintNumber(s32 num)
 {
   if (num == 0) 
   {
-	while(!USART_GetFlagStatus(USART1, USART_FLAG_TXE));
+    while(!USART_GetFlagStatus(USART1, USART_FLAG_TXE));
     USART_SendData(USART1, '0');
   }
   else 
   {
-    static u8 numstr[10];
+    u8 numstr[10];
     u8 CurPos=0;
     if(num < 0)
     {
@@ -107,7 +107,7 @@ void Serial_PrintNumber(s32 num)
     while (CurPos--) 
 	{
 	  while(!USART_GetFlagStatus(USART1, USART_FLAG_TXE));
-      USART_SendData(USART1, numstr[CurPos] + 48);
+          USART_SendData(USART1, numstr[CurPos]);
 	}
   }
 }

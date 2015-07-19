@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ELF Linker V7.40.2.8542/W32 for ARM                 19/Jul/2015  20:28:47
+# IAR ELF Linker V7.40.2.8542/W32 for ARM                 19/Jul/2015  23:41:44
 # Copyright 2007-2015 IAR Systems AB.
 #
 #    Output file  =  
@@ -63,43 +63,47 @@ __SystemLibrary = DLib
   .intvec            ro code  0x08000000    0xc0  startup_stm32f0xx.o [1]
                             - 0x080000c0    0xc0
 
-"P1":                                     0x28a0
-  .text              ro code  0x080000c0   0xa6c  uip.o [1]
-  .text              ro code  0x08000b2c    0x54  ABImemset.o [4]
-  .text              ro code  0x08000b80   0x560  main.o [1]
-  .text              ro code  0x080010e0   0x38e  config.o [1]
-  .text              ro code  0x0800146e    0x2a  zero_init3.o [4]
-  .text              ro code  0x08001498   0x158  system_stm32f0xx.o [1]
-  .text              ro code  0x080015f0    0x18  errors.o [1]
-  .text              ro code  0x08001608   0x168  serial.o [1]
-  .text              ro code  0x08001770   0x424  macphy.o [1]
-  .text              ro code  0x08001b94    0x32  timer.o [1]
-  .text              ro code  0x08001bc6     0x2  startup_stm32f0xx.o [1]
-  .text              ro code  0x08001bc8   0x2e8  uip_arp.o [1]
-  .text              ro code  0x08001eb0   0x1a6  stm32f0xx_usart.o [1]
-  .text              ro code  0x08002056     0x2  startup_stm32f0xx.o [1]
-  .text              ro code  0x08002058   0x1a4  stm32f0xx_rcc.o [1]
-  .text              ro code  0x080021fc    0x8a  stm32f0xx_gpio.o [1]
-  .text              ro code  0x08002286     0x2  startup_stm32f0xx.o [1]
-  .text              ro code  0x08002288    0x54  stm32f0xx_misc.o [1]
-  .text              ro code  0x080022dc    0xe8  stm32f0xx_tim.o [1]
-  .text              ro code  0x080023c4    0xac  stm32f0xx_spi.o [1]
-  .text              ro code  0x08002470    0xe0  I32DivModFast.o [4]
-  .text              ro code  0x08002550     0x2  IntDivZer.o [4]
-  .text              ro code  0x08002552     0x2  startup_stm32f0xx.o [1]
-  .text              ro code  0x08002554   0x2a4  stm32f0xx_it.o [1]
-  .text              ro code  0x080027f8    0x30  copy_init3.o [4]
-  .text              ro code  0x08002828    0x28  data_init.o [4]
-  .iar.init_table    const    0x08002850    0x24  - Linker created -
-  .text              ro code  0x08002874    0x1a  cmain.o [4]
-  .text              ro code  0x0800288e     0x4  low_level_init.o [3]
-  .text              ro code  0x08002892     0x8  exit.o [3]
-  .text              ro code  0x0800289a     0x2  startup_stm32f0xx.o [1]
-  .text              ro code  0x0800289c     0xa  cexit.o [4]
-  .text              ro code  0x080028a6     0x2  startup_stm32f0xx.o [1]
-  .text              ro code  0x080028a8    0x14  exit.o [5]
-  .text              ro code  0x080028bc    0x10  startup_stm32f0xx.o [1]
-  .text              ro code  0x080028cc     0xc  cstartup_M.o [4]
+"P1":                                     0x2898
+  .text              ro code  0x080000c0   0xa10  uip.o [1]
+  .text              ro code  0x08000ad0    0x54  ABImemset.o [4]
+  .text              ro code  0x08000b24   0x5a0  main.o [1]
+  .text              ro code  0x080010c4   0x38e  config.o [1]
+  .text              ro code  0x08001452    0x2a  zero_init3.o [4]
+  .text              ro code  0x0800147c   0x158  system_stm32f0xx.o [1]
+  .text              ro code  0x080015d4    0x18  errors.o [1]
+  .text              ro code  0x080015ec   0x160  serial.o [1]
+  .text              ro code  0x0800174c   0x430  macphy.o [1]
+  .text              ro code  0x08001b7c    0x32  timer.o [1]
+  .text              ro code  0x08001bae     0x2  startup_stm32f0xx.o [1]
+  .text              ro code  0x08001bb0   0x2f8  uip_arp.o [1]
+  .text              ro code  0x08001ea8   0x1a6  stm32f0xx_usart.o [1]
+  .text              ro code  0x0800204e     0x2  startup_stm32f0xx.o [1]
+  .text              ro code  0x08002050   0x1a4  stm32f0xx_rcc.o [1]
+  .text              ro code  0x080021f4    0x8a  stm32f0xx_gpio.o [1]
+  .text              ro code  0x0800227e     0x2  startup_stm32f0xx.o [1]
+  .text              ro code  0x08002280    0x54  stm32f0xx_misc.o [1]
+  .text              ro code  0x080022d4    0xe8  stm32f0xx_tim.o [1]
+  .text              ro code  0x080023bc    0xac  stm32f0xx_spi.o [1]
+  .text              ro code  0x08002468    0xe0  I32DivModFast.o [4]
+  .text              ro code  0x08002548     0x2  IntDivZer.o [4]
+  .text              ro code  0x0800254a     0x2  startup_stm32f0xx.o [1]
+  .text              ro code  0x0800254c   0x2a4  stm32f0xx_it.o [1]
+  .text              ro code  0x080027f0    0x30  copy_init3.o [4]
+  .text              ro code  0x08002820    0x28  data_init.o [4]
+  .iar.init_table    const    0x08002848    0x24  - Linker created -
+  .text              ro code  0x0800286c    0x1a  cmain.o [4]
+  .text              ro code  0x08002886     0x4  low_level_init.o [3]
+  .text              ro code  0x0800288a     0x8  exit.o [3]
+  .text              ro code  0x08002892     0x2  startup_stm32f0xx.o [1]
+  .text              ro code  0x08002894     0xa  cexit.o [4]
+  .text              ro code  0x0800289e     0x2  startup_stm32f0xx.o [1]
+  .text              ro code  0x080028a0    0x14  exit.o [5]
+  .text              ro code  0x080028b4    0x10  startup_stm32f0xx.o [1]
+  .text              ro code  0x080028c4     0xc  cstartup_M.o [4]
+  .text              ro code  0x080028d0     0x2  startup_stm32f0xx.o [1]
+  .text              ro code  0x080028d2     0x2  startup_stm32f0xx.o [1]
+  .text              ro code  0x080028d4     0x2  startup_stm32f0xx.o [1]
+  .text              ro code  0x080028d6     0x2  startup_stm32f0xx.o [1]
   .text              ro code  0x080028d8     0x2  startup_stm32f0xx.o [1]
   .text              ro code  0x080028da     0x2  startup_stm32f0xx.o [1]
   .text              ro code  0x080028dc     0x2  startup_stm32f0xx.o [1]
@@ -115,16 +119,12 @@ __SystemLibrary = DLib
   .text              ro code  0x080028f0     0x2  startup_stm32f0xx.o [1]
   .text              ro code  0x080028f2     0x2  startup_stm32f0xx.o [1]
   .text              ro code  0x080028f4     0x2  startup_stm32f0xx.o [1]
-  .text              ro code  0x080028f6     0x2  startup_stm32f0xx.o [1]
-  .text              ro code  0x080028f8     0x2  startup_stm32f0xx.o [1]
-  .text              ro code  0x080028fa     0x2  startup_stm32f0xx.o [1]
-  .text              ro code  0x080028fc     0x2  startup_stm32f0xx.o [1]
-  .rodata            const    0x080028fe     0x0  zero_init3.o [4]
-  .rodata            const    0x080028fe     0x0  copy_init3.o [4]
-  Initializer bytes  const    0x08002900    0x60  <for P2 s0>
-                            - 0x08002960  0x28a0
+  .rodata            const    0x080028f6     0x0  zero_init3.o [4]
+  .rodata            const    0x080028f6     0x0  copy_init3.o [4]
+  Initializer bytes  const    0x080028f8    0x60  <for P2 s0>
+                            - 0x08002958  0x2898
 
-"P2":                                      0x828
+"P2":                                      0x798
   P2 s0                       0x20000000    0x60  <Init block>
     .data            inited   0x20000000    0x2c  main.o [1]
     .data            inited   0x2000002c    0x14  system_stm32f0xx.o [1]
@@ -133,21 +133,20 @@ __SystemLibrary = DLib
     .data            inited   0x20000056     0x6  timeout.o [1]
     .data            inited   0x2000005c     0x4  macphy.o [1]
   .bss               zero     0x20000060   0x1fc  macphy.o [1]
-  .bss               zero     0x2000025c    0x8c  uip_arp.o [1]
-  .bss               zero     0x200002e8    0x80  uip.o [1]
-  .bss               zero     0x20000368    0x60  uip.o [1]
-  .bss               zero     0x200003c8    0x17  stm32f0xx_it.o [1]
-  .bss               zero     0x200003df     0x1  macphy.o [1]
-  .bss               zero     0x200003e0    0x16  stm32f0xx_it.o [1]
-  .bss               zero     0x200003f8     0xc  serial.o [1]
-  .bss               zero     0x20000404     0x8  errors.o [1]
-  .bss               zero     0x2000040c     0x8  uip.o [1]
-  .bss               zero     0x20000414     0x8  uip.o [1]
-  .bss               zero     0x2000041c     0x8  uip.o [1]
-  .bss               zero     0x20000424     0x4  main.o [1]
-  CSTACK                      0x20000428   0x400  <Block>
-    CSTACK           uninit   0x20000428   0x400  <Block tail>
-                            - 0x20000828   0x828
+  .bss               zero     0x2000025c    0x68  uip_arp.o [1]
+  .bss               zero     0x200002c4    0x4c  uip.o [1]
+  .bss               zero     0x20000310    0x3c  uip.o [1]
+  .bss               zero     0x2000034c    0x17  stm32f0xx_it.o [1]
+  .bss               zero     0x20000363     0x1  macphy.o [1]
+  .bss               zero     0x20000364    0x16  stm32f0xx_it.o [1]
+  .bss               zero     0x2000037c     0x8  errors.o [1]
+  .bss               zero     0x20000384     0x8  uip.o [1]
+  .bss               zero     0x2000038c     0x4  main.o [1]
+  .bss               zero     0x20000390     0x4  uip.o [1]
+  .bss               zero     0x20000394     0x4  uip.o [1]
+  CSTACK                      0x20000398   0x400  <Block>
+    CSTACK           uninit   0x20000398   0x400  <Block tail>
+                            - 0x20000798   0x798
 
 
 *******************************************************************************
@@ -157,12 +156,12 @@ __SystemLibrary = DLib
           Address     Size
           -------     ----
 Zero (__iar_zero_init3)
-    1 destination range, total size 0x3c8:
-          0x20000060  0x3c8
+    1 destination range, total size 0x338:
+          0x20000060  0x338
 
 Copy (__iar_copy_init3)
     1 source range, total size 0x60:
-          0x08002900   0x60
+          0x080028f8   0x60
     1 destination range, total size 0x60:
           0x20000000   0x60
 
@@ -177,9 +176,9 @@ Copy (__iar_copy_init3)
 D:\_WORK\GitHub\uIP_ENC28J60\IAR_EW6.7\EWARM\TIM_TimeBase\Obj: [1]
     config.o                 910
     errors.o                  24                 8
-    macphy.o               1 060        4      513
-    main.o                 1 376       44       48
-    serial.o                 360                12
+    macphy.o               1 072        4      513
+    main.o                 1 440       44       48
+    serial.o                 352
     startup_stm32f0xx.o      258
     stm32f0xx_gpio.o         138
     stm32f0xx_it.o           676                45
@@ -191,10 +190,10 @@ D:\_WORK\GitHub\uIP_ENC28J60\IAR_EW6.7\EWARM\TIM_TimeBase\Obj: [1]
     system_stm32f0xx.o       344       20       20
     timeout.o                          12       12
     timer.o                   50
-    uip.o                  2 668               248
-    uip_arp.o                744               140
+    uip.o                  2 576               152
+    uip_arp.o                760               104
     ----------------------------------------------
-    Total:                 9 938       96    1 062
+    Total:                 9 930       96      918
 
 command line: [2]
     ----------------------------------------------
@@ -227,7 +226,7 @@ shb_l.a: [5]
     Gaps                                         2
     Linker created                     38    1 024
 --------------------------------------------------
-    Grand Total:          10 458      134    2 088
+    Grand Total:          10 450      134    1 944
 
 
 *******************************************************************************
@@ -236,193 +235,194 @@ shb_l.a: [5]
 
 Entry                      Address   Size  Type      Object
 -----                      -------   ----  ----      ------
-.iar.init_table$$Base   0x08002850          --   Gb  - Linker created -
-.iar.init_table$$Limit  0x08002874          --   Gb  - Linker created -
-?main                   0x08002875         Code  Gb  cmain.o [4]
+.iar.init_table$$Base   0x08002848          --   Gb  - Linker created -
+.iar.init_table$$Limit  0x0800286c          --   Gb  - Linker created -
+?main                   0x0800286d         Code  Gb  cmain.o [4]
 AHBPrescTable           0x2000002c   0x10  Data  Gb  system_stm32f0xx.o [1]
 APBAHBPrescTable        0x20000040   0x10  Data  Lc  stm32f0xx_rcc.o [1]
-BTN1_DEB_STATE          0x200003e6    0x1  Data  Gb  stm32f0xx_it.o [1]
-BTN1_DELAY_FLAG         0x200003e7    0x1  Data  Gb  stm32f0xx_it.o [1]
-BTN1_press_timer        0x200003f4    0x2  Data  Gb  stm32f0xx_it.o [1]
-CSTACK$$Base            0x20000428          --   Gb  - Linker created -
-CSTACK$$Limit           0x20000828          --   Gb  - Linker created -
-Config                  0x080010e1   0x28  Code  Gb  config.o [1]
-Config_GPIO             0x08001109   0xd2  Code  Gb  config.o [1]
-Config_SPI2             0x080012e7   0xbe  Code  Gb  config.o [1]
-Config_TIM14            0x08001227   0x2c  Code  Gb  config.o [1]
-Config_TIM15            0x08001253   0x26  Code  Gb  config.o [1]
-Config_TIM3             0x080011db   0x4c  Code  Gb  config.o [1]
-Config_TIM6             0x080013a5   0x3c  Code  Gb  config.o [1]
-Config_UART1            0x08001279   0x6e  Code  Gb  config.o [1]
+BTN1_DEB_STATE          0x2000036a    0x1  Data  Gb  stm32f0xx_it.o [1]
+BTN1_DELAY_FLAG         0x2000036b    0x1  Data  Gb  stm32f0xx_it.o [1]
+BTN1_press_timer        0x20000378    0x2  Data  Gb  stm32f0xx_it.o [1]
+CSTACK$$Base            0x20000398          --   Gb  - Linker created -
+CSTACK$$Limit           0x20000798          --   Gb  - Linker created -
+Config                  0x080010c5   0x28  Code  Gb  config.o [1]
+Config_GPIO             0x080010ed   0xd2  Code  Gb  config.o [1]
+Config_SPI2             0x080012cb   0xbe  Code  Gb  config.o [1]
+Config_TIM14            0x0800120b   0x2c  Code  Gb  config.o [1]
+Config_TIM15            0x08001237   0x26  Code  Gb  config.o [1]
+Config_TIM3             0x080011bf   0x4c  Code  Gb  config.o [1]
+Config_TIM6             0x08001389   0x3c  Code  Gb  config.o [1]
+Config_UART1            0x0800125d   0x6e  Code  Gb  config.o [1]
 DMA1_Channel2_3_IRQHandler
-                        0x08002555    0x2  Code  Gb  stm32f0xx_it.o [1]
-Errors_Init             0x080015f1   0x14  Code  Gb  errors.o [1]
-FLAG_1000ms             0x200003e3    0x1  Data  Gb  stm32f0xx_it.o [1]
-FLAG_250ms              0x200003e1    0x1  Data  Gb  stm32f0xx_it.o [1]
-FLAG_500ms              0x200003e2    0x1  Data  Gb  stm32f0xx_it.o [1]
-FLAG_50ms               0x200003e0    0x1  Data  Gb  stm32f0xx_it.o [1]
+                        0x0800254d    0x2  Code  Gb  stm32f0xx_it.o [1]
+Errors_Init             0x080015d5   0x14  Code  Gb  errors.o [1]
+FLAG_1000ms             0x20000367    0x1  Data  Gb  stm32f0xx_it.o [1]
+FLAG_250ms              0x20000365    0x1  Data  Gb  stm32f0xx_it.o [1]
+FLAG_500ms              0x20000366    0x1  Data  Gb  stm32f0xx_it.o [1]
+FLAG_50ms               0x20000364    0x1  Data  Gb  stm32f0xx_it.o [1]
 FLAG_BTN1_lock          0x20000008    0x1  Data  Lc  main.o [1]
-FLAG_UART_cmd_rcv       0x200003de    0x1  Data  Gb  stm32f0xx_it.o [1]
-GPIO_Init               0x080021fd   0x6a  Code  Gb  stm32f0xx_gpio.o [1]
-GPIO_PinAFConfig        0x08002267   0x20  Code  Gb  stm32f0xx_gpio.o [1]
-HardFault_Handler       0x0800255b    0x2  Code  Gb  stm32f0xx_it.o [1]
-NMI_Handler             0x08002559    0x2  Code  Gb  stm32f0xx_it.o [1]
-NVIC_Init               0x08002289   0x46  Code  Gb  stm32f0xx_misc.o [1]
-PendSV_Handler          0x0800255f    0x2  Code  Gb  stm32f0xx_it.o [1]
-RCC_AHBPeriphClockCmd   0x08002171   0x14  Code  Gb  stm32f0xx_rcc.o [1]
-RCC_APB1PeriphClockCmd  0x08002199   0x14  Code  Gb  stm32f0xx_rcc.o [1]
-RCC_APB1PeriphResetCmd  0x080021c1   0x14  Code  Gb  stm32f0xx_rcc.o [1]
-RCC_APB2PeriphClockCmd  0x08002185   0x14  Code  Gb  stm32f0xx_rcc.o [1]
-RCC_APB2PeriphResetCmd  0x080021ad   0x14  Code  Gb  stm32f0xx_rcc.o [1]
-RCC_GetClocksFreq       0x08002059  0x114  Code  Gb  stm32f0xx_rcc.o [1]
-Region$$Table$$Base     0x08002850          --   Gb  - Linker created -
-Region$$Table$$Limit    0x08002874          --   Gb  - Linker created -
-SPI_Cmd                 0x08002443   0x14  Code  Gb  stm32f0xx_spi.o [1]
-SPI_I2S_DeInit          0x080023c5   0x36  Code  Gb  stm32f0xx_spi.o [1]
-SPI_Init                0x080023fb   0x48  Code  Gb  stm32f0xx_spi.o [1]
-SVC_Handler             0x0800255d    0x2  Code  Gb  stm32f0xx_it.o [1]
-Serial_PrintByte        0x08001625   0x94  Code  Gb  serial.o [1]
-Serial_PrintChar        0x08001609   0x1c  Code  Gb  serial.o [1]
-Serial_PrintNumber      0x080016df   0x86  Code  Gb  serial.o [1]
-Serial_PrintString      0x080016b9   0x26  Code  Gb  serial.o [1]
-SysTick_Handler         0x08002561    0x2  Code  Gb  stm32f0xx_it.o [1]
+FLAG_UART_cmd_rcv       0x20000362    0x1  Data  Gb  stm32f0xx_it.o [1]
+GPIO_Init               0x080021f5   0x6a  Code  Gb  stm32f0xx_gpio.o [1]
+GPIO_PinAFConfig        0x0800225f   0x20  Code  Gb  stm32f0xx_gpio.o [1]
+HardFault_Handler       0x08002553    0x2  Code  Gb  stm32f0xx_it.o [1]
+NMI_Handler             0x08002551    0x2  Code  Gb  stm32f0xx_it.o [1]
+NVIC_Init               0x08002281   0x46  Code  Gb  stm32f0xx_misc.o [1]
+PendSV_Handler          0x08002557    0x2  Code  Gb  stm32f0xx_it.o [1]
+RCC_AHBPeriphClockCmd   0x08002169   0x14  Code  Gb  stm32f0xx_rcc.o [1]
+RCC_APB1PeriphClockCmd  0x08002191   0x14  Code  Gb  stm32f0xx_rcc.o [1]
+RCC_APB1PeriphResetCmd  0x080021b9   0x14  Code  Gb  stm32f0xx_rcc.o [1]
+RCC_APB2PeriphClockCmd  0x0800217d   0x14  Code  Gb  stm32f0xx_rcc.o [1]
+RCC_APB2PeriphResetCmd  0x080021a5   0x14  Code  Gb  stm32f0xx_rcc.o [1]
+RCC_GetClocksFreq       0x08002051  0x114  Code  Gb  stm32f0xx_rcc.o [1]
+Region$$Table$$Base     0x08002848          --   Gb  - Linker created -
+Region$$Table$$Limit    0x0800286c          --   Gb  - Linker created -
+SPI_Cmd                 0x0800243b   0x14  Code  Gb  stm32f0xx_spi.o [1]
+SPI_I2S_DeInit          0x080023bd   0x36  Code  Gb  stm32f0xx_spi.o [1]
+SPI_Init                0x080023f3   0x48  Code  Gb  stm32f0xx_spi.o [1]
+SVC_Handler             0x08002555    0x2  Code  Gb  stm32f0xx_it.o [1]
+Serial_PrintByte        0x08001609   0x94  Code  Gb  serial.o [1]
+Serial_PrintChar        0x080015ed   0x1c  Code  Gb  serial.o [1]
+Serial_PrintNumber      0x080016c3   0x84  Code  Gb  serial.o [1]
+Serial_PrintString      0x0800169d   0x26  Code  Gb  serial.o [1]
+SysTick_Handler         0x08002559    0x2  Code  Gb  stm32f0xx_it.o [1]
 SystemCoreClock         0x2000003c    0x4  Data  Gb  system_stm32f0xx.o [1]
-SystemCoreClockUpdate   0x08001573   0x4c  Code  Gb  system_stm32f0xx.o [1]
-SystemInit              0x08001499   0xda  Code  Gb  system_stm32f0xx.o [1]
-TIM2_IRQHandler         0x08002557    0x2  Code  Gb  stm32f0xx_it.o [1]
-TIM3_IRQHandler         0x08002563  0x130  Code  Gb  stm32f0xx_it.o [1]
-TIM_ClearITPendingBit   0x08002399    0x6  Code  Gb  stm32f0xx_tim.o [1]
-TIM_Cmd                 0x08002335   0x14  Code  Gb  stm32f0xx_tim.o [1]
-TIM_DMACmd              0x0800239f   0x12  Code  Gb  stm32f0xx_tim.o [1]
-TIM_GetITStatus         0x08002383   0x16  Code  Gb  stm32f0xx_tim.o [1]
-TIM_ITConfig            0x08002371   0x12  Code  Gb  stm32f0xx_tim.o [1]
+SystemCoreClockUpdate   0x08001557   0x4c  Code  Gb  system_stm32f0xx.o [1]
+SystemInit              0x0800147d   0xda  Code  Gb  system_stm32f0xx.o [1]
+TIM2_IRQHandler         0x0800254f    0x2  Code  Gb  stm32f0xx_it.o [1]
+TIM3_IRQHandler         0x0800255b  0x130  Code  Gb  stm32f0xx_it.o [1]
+TIM_ClearITPendingBit   0x08002391    0x6  Code  Gb  stm32f0xx_tim.o [1]
+TIM_Cmd                 0x0800232d   0x14  Code  Gb  stm32f0xx_tim.o [1]
+TIM_DMACmd              0x08002397   0x12  Code  Gb  stm32f0xx_tim.o [1]
+TIM_GetITStatus         0x0800237b   0x16  Code  Gb  stm32f0xx_tim.o [1]
+TIM_ITConfig            0x08002369   0x12  Code  Gb  stm32f0xx_tim.o [1]
 TIM_SelectOutputTrigger
-                        0x080023b1   0x10  Code  Gb  stm32f0xx_tim.o [1]
-TIM_TimeBaseInit        0x080022dd   0x58  Code  Gb  stm32f0xx_tim.o [1]
+                        0x080023a9   0x10  Code  Gb  stm32f0xx_tim.o [1]
+TIM_TimeBaseInit        0x080022d5   0x58  Code  Gb  stm32f0xx_tim.o [1]
 Timeout_istout1         0x20000050    0x1  Data  Gb  timeout.o [1]
 Timeout_istout2         0x20000056    0x1  Data  Gb  timeout.o [1]
 Timeout_tout1           0x20000054    0x2  Data  Gb  timeout.o [1]
 Timeout_tout2           0x2000005a    0x2  Data  Gb  timeout.o [1]
 Timeout_toutcnt1        0x20000052    0x2  Data  Gb  timeout.o [1]
 Timeout_toutcnt2        0x20000058    0x2  Data  Gb  timeout.o [1]
-UART_CMD                0x200003c8   0x14  Data  Gb  stm32f0xx_it.o [1]
-UART_rcv_state          0x200003ea    0x1  Data  Gb  stm32f0xx_it.o [1]
-UARTdatachksum          0x200003dd    0x1  Data  Gb  stm32f0xx_it.o [1]
-UARTrcvbuffidx          0x200003dc    0x1  Data  Gb  stm32f0xx_it.o [1]
-UARTtimeoutcnt          0x200003e9    0x1  Data  Gb  stm32f0xx_it.o [1]
-USART1_IRQHandler       0x08002695  0x12a  Code  Gb  stm32f0xx_it.o [1]
+UART_CMD                0x2000034c   0x14  Data  Gb  stm32f0xx_it.o [1]
+UART_rcv_state          0x2000036e    0x1  Data  Gb  stm32f0xx_it.o [1]
+UARTdatachksum          0x20000361    0x1  Data  Gb  stm32f0xx_it.o [1]
+UARTrcvbuffidx          0x20000360    0x1  Data  Gb  stm32f0xx_it.o [1]
+UARTtimeoutcnt          0x2000036d    0x1  Data  Gb  stm32f0xx_it.o [1]
+USART1_IRQHandler       0x0800268d  0x12a  Code  Gb  stm32f0xx_it.o [1]
 USART_ClearITPendingBit
-                        0x0800204d    0xa  Code  Gb  stm32f0xx_usart.o [1]
-USART_Cmd               0x08001f95   0x16  Code  Gb  stm32f0xx_usart.o [1]
-USART_DeInit            0x08001eb1   0x52  Code  Gb  stm32f0xx_usart.o [1]
-USART_GetFlagStatus     0x08002007    0xe  Code  Gb  stm32f0xx_usart.o [1]
-USART_GetITStatus       0x08002015   0x38  Code  Gb  stm32f0xx_usart.o [1]
-USART_ITConfig          0x08001fdd   0x2a  Code  Gb  stm32f0xx_usart.o [1]
-USART_Init              0x08001f03   0x92  Code  Gb  stm32f0xx_usart.o [1]
-USART_ReceiveData       0x08001fb3    0x8  Code  Gb  stm32f0xx_usart.o [1]
-USART_SendData          0x08001fab    0x8  Code  Gb  stm32f0xx_usart.o [1]
+                        0x08002045    0xa  Code  Gb  stm32f0xx_usart.o [1]
+USART_Cmd               0x08001f8d   0x16  Code  Gb  stm32f0xx_usart.o [1]
+USART_DeInit            0x08001ea9   0x52  Code  Gb  stm32f0xx_usart.o [1]
+USART_GetFlagStatus     0x08001fff    0xe  Code  Gb  stm32f0xx_usart.o [1]
+USART_GetITStatus       0x0800200d   0x38  Code  Gb  stm32f0xx_usart.o [1]
+USART_ITConfig          0x08001fd5   0x2a  Code  Gb  stm32f0xx_usart.o [1]
+USART_Init              0x08001efb   0x92  Code  Gb  stm32f0xx_usart.o [1]
+USART_ReceiveData       0x08001fab    0x8  Code  Gb  stm32f0xx_usart.o [1]
+USART_SendData          0x08001fa3    0x8  Code  Gb  stm32f0xx_usart.o [1]
 __ICFEDIT_region_RAM_end__ {Abs}
                         0x20001fff          --   Gb  command line/config [2]
 __ICFEDIT_region_RAM_start__ {Abs}
                         0x20000000          --   Gb  command line/config [2]
-__aeabi_idiv            0x0800249d         Code  Gb  I32DivModFast.o [4]
-__aeabi_idiv0           0x08002551         Code  Gb  IntDivZer.o [4]
-__aeabi_idivmod         0x0800249d         Code  Gb  I32DivModFast.o [4]
-__aeabi_memclr4         0x08000b7d         Code  Gb  ABImemset.o [4]
-__aeabi_memclr8         0x08000b7d         Code  Gb  ABImemset.o [4]
-__aeabi_memset          0x08000b2d         Code  Gb  ABImemset.o [4]
-__aeabi_uidiv           0x080024a3         Code  Gb  I32DivModFast.o [4]
-__aeabi_uidivmod        0x080024a3         Code  Gb  I32DivModFast.o [4]
-__cmain                 0x08002875         Code  Gb  cmain.o [4]
-__exit                  0x080028a9   0x14  Code  Gb  exit.o [5]
-__iar_Memset4_word      0x08000b4d         Code  Gb  ABImemset.o [4]
-__iar_Memset_word       0x08000b39         Code  Gb  ABImemset.o [4]
-__iar_copy_init3        0x080027f9   0x30  Code  Gb  copy_init3.o [4]
-__iar_data_init3        0x08002829   0x28  Code  Gb  data_init.o [4]
-__iar_program_start     0x080028cd         Code  Gb  cstartup_M.o [4]
-__iar_zero_init3        0x0800146f   0x2a  Code  Gb  zero_init3.o [4]
-__low_level_init        0x0800288f    0x4  Code  Gb  low_level_init.o [3]
+__aeabi_idiv            0x08002495         Code  Gb  I32DivModFast.o [4]
+__aeabi_idiv0           0x08002549         Code  Gb  IntDivZer.o [4]
+__aeabi_idivmod         0x08002495         Code  Gb  I32DivModFast.o [4]
+__aeabi_memclr4         0x08000b21         Code  Gb  ABImemset.o [4]
+__aeabi_memclr8         0x08000b21         Code  Gb  ABImemset.o [4]
+__aeabi_memset          0x08000ad1         Code  Gb  ABImemset.o [4]
+__aeabi_uidiv           0x0800249b         Code  Gb  I32DivModFast.o [4]
+__aeabi_uidivmod        0x0800249b         Code  Gb  I32DivModFast.o [4]
+__cmain                 0x0800286d         Code  Gb  cmain.o [4]
+__exit                  0x080028a1   0x14  Code  Gb  exit.o [5]
+__iar_Memset4_word      0x08000af1         Code  Gb  ABImemset.o [4]
+__iar_Memset_word       0x08000add         Code  Gb  ABImemset.o [4]
+__iar_copy_init3        0x080027f1   0x30  Code  Gb  copy_init3.o [4]
+__iar_data_init3        0x08002821   0x28  Code  Gb  data_init.o [4]
+__iar_program_start     0x080028c5         Code  Gb  cstartup_M.o [4]
+__iar_zero_init3        0x08001453   0x2a  Code  Gb  zero_init3.o [4]
+__low_level_init        0x08002887    0x4  Code  Gb  low_level_init.o [3]
 __vector_table          0x08000000         Data  Gb  startup_stm32f0xx.o [1]
-_call_main              0x08002881         Code  Gb  cmain.o [4]
-_exit                   0x0800289d         Code  Gb  cexit.o [4]
-_main                   0x0800288b         Code  Gb  cmain.o [4]
-arp_table               0x20000268   0x80  Data  Gb  uip_arp.o [1]
+_call_main              0x08002879         Code  Gb  cmain.o [4]
+_exit                   0x08002895         Code  Gb  cexit.o [4]
+_main                   0x08002883         Code  Gb  cmain.o [4]
+arp_table               0x20000264   0x60  Data  Gb  uip_arp.o [1]
 arp_timer               0x20000024    0x8  Data  Gb  main.o [1]
 arptime                 0x2000025d    0x1  Data  Lc  uip_arp.o [1]
-broadcast_ethaddr       0x08001ea8    0x8  Data  Lc  uip_arp.o [1]
-btn1_0_cnt              0x200003e4    0x1  Data  Gb  stm32f0xx_it.o [1]
-btn1_1_cnt              0x200003e5    0x1  Data  Gb  stm32f0xx_it.o [1]
-btn1_delay_cnt          0x200003e8    0x1  Data  Gb  stm32f0xx_it.o [1]
-c                       0x200002f1    0x1  Data  Lc  uip.o [1]
-chksum                  0x0800010f   0x2e  Code  Lc  uip.o [1]
-clock_time              0x08001441    0x4  Code  Gb  config.o [1]
-cnt_flag_1000ms         0x200003f2    0x2  Data  Gb  stm32f0xx_it.o [1]
-cnt_flag_250ms          0x200003ee    0x2  Data  Gb  stm32f0xx_it.o [1]
-cnt_flag_500ms          0x200003f0    0x2  Data  Gb  stm32f0xx_it.o [1]
-cnt_flag_50ms           0x200003ec    0x2  Data  Gb  stm32f0xx_it.o [1]
-error_cnt               0x20000404    0x4  Data  Lc  errors.o [1]
-error_state             0x20000408    0x4  Data  Lc  errors.o [1]
-exit                    0x08002893    0x8  Code  Gb  exit.o [3]
-htons                   0x08000b03    0x8  Code  Gb  uip.o [1]
+broadcast_ethaddr       0x08001ea0    0x8  Data  Lc  uip_arp.o [1]
+btn1_0_cnt              0x20000368    0x1  Data  Gb  stm32f0xx_it.o [1]
+btn1_1_cnt              0x20000369    0x1  Data  Gb  stm32f0xx_it.o [1]
+btn1_delay_cnt          0x2000036c    0x1  Data  Gb  stm32f0xx_it.o [1]
+c                       0x200002cd    0x1  Data  Lc  uip.o [1]
+chksum                  0x0800010f   0x36  Code  Lc  uip.o [1]
+clock_time              0x08001425    0x4  Code  Gb  config.o [1]
+cnt_flag_1000ms         0x20000376    0x2  Data  Gb  stm32f0xx_it.o [1]
+cnt_flag_250ms          0x20000372    0x2  Data  Gb  stm32f0xx_it.o [1]
+cnt_flag_500ms          0x20000374    0x2  Data  Gb  stm32f0xx_it.o [1]
+cnt_flag_50ms           0x20000370    0x2  Data  Gb  stm32f0xx_it.o [1]
+error_cnt               0x2000037c    0x4  Data  Lc  errors.o [1]
+error_state             0x20000380    0x4  Data  Lc  errors.o [1]
+exit                    0x0800288b    0x8  Code  Gb  exit.o [3]
+htons                   0x08000aa1    0xa  Code  Gb  uip.o [1]
 i                       0x2000025c    0x1  Data  Lc  uip_arp.o [1]
-ipaddr                  0x2000000c    0x8  Data  Gb  main.o [1]
-ipaddr                  0x20000260    0x8  Data  Lc  uip_arp.o [1]
-ipid                    0x20000360    0x4  Data  Lc  uip.o [1]
-iss                     0x200002e8    0x4  Data  Lc  uip.o [1]
-lastport                0x20000364    0x4  Data  Lc  uip.o [1]
+ipaddr                  0x2000000c    0x4  Data  Gb  main.o [1]
+ipaddr                  0x20000260    0x4  Data  Lc  uip_arp.o [1]
+ipid                    0x200002d8    0x2  Data  Lc  uip.o [1]
+iss                     0x200002c4    0x4  Data  Lc  uip.o [1]
+lastport                0x200002da    0x2  Data  Lc  uip.o [1]
 macaddr                 0x20000014    0x8  Data  Gb  main.o [1]
-macphy_clearbit         0x08001911    0xe  Code  Gb  macphy.o [1]
-macphy_eth_readreg      0x08001945    0xe  Code  Gb  macphy.o [1]
-macphy_init             0x08001771  0x158  Code  Gb  macphy.o [1]
-macphy_pktcnt           0x080018f1   0x10  Code  Gb  macphy.o [1]
-macphy_readpkt          0x080019bd   0xc2  Code  Gb  macphy.o [1]
-macphy_reset            0x08001969   0x16  Code  Gb  macphy.o [1]
-macphy_sendpkt          0x08001a89  0x100  Code  Gb  macphy.o [1]
-macphy_setbank          0x0800197f   0x3e  Code  Gb  macphy.o [1]
-macphy_setbit           0x08001901   0x10  Code  Gb  macphy.o [1]
-macphy_startrx          0x080018e5    0xc  Code  Gb  macphy.o [1]
-macphy_writereg         0x08001935   0x10  Code  Gb  macphy.o [1]
-main                    0x08000b81  0x1c8  Code  Gb  main.o [1]
-memcpy                  0x08001457   0x18  Code  Gb  config.o [1]
-memset                  0x08001445   0x12  Code  Gb  config.o [1]
+macphy_clearbit         0x080018ed    0xe  Code  Gb  macphy.o [1]
+macphy_eth_readreg      0x08001921    0xe  Code  Gb  macphy.o [1]
+macphy_init             0x0800174d  0x158  Code  Gb  macphy.o [1]
+macphy_pktcnt           0x080018cd   0x10  Code  Gb  macphy.o [1]
+macphy_readpkt          0x08001999   0xc2  Code  Gb  macphy.o [1]
+macphy_reset            0x08001945   0x16  Code  Gb  macphy.o [1]
+macphy_sendpkt          0x08001a65  0x10a  Code  Gb  macphy.o [1]
+macphy_setbank          0x0800195b   0x3e  Code  Gb  macphy.o [1]
+macphy_setbit           0x080018dd   0x10  Code  Gb  macphy.o [1]
+macphy_startrx          0x080018c1    0xc  Code  Gb  macphy.o [1]
+macphy_writereg         0x08001911   0x10  Code  Gb  macphy.o [1]
+main                    0x08000b25  0x202  Code  Gb  main.o [1]
+memcpy                  0x0800143b   0x18  Code  Gb  config.o [1]
+memset                  0x08001429   0x12  Code  Gb  config.o [1]
 periodic_timer          0x2000001c    0x8  Data  Gb  main.o [1]
 pkt_buf                 0x20000060  0x1fc  Data  Gb  macphy.o [1]
-rev_ID                  0x200003df    0x1  Data  Gb  macphy.o [1]
-spi_ss                  0x080013fd   0x12  Code  Gb  config.o [1]
-spi_txrx                0x080013e9    0xe  Code  Gb  config.o [1]
-timer_expired           0x08001baf   0x18  Code  Gb  timer.o [1]
-timer_reset             0x08001b9d    0xa  Code  Gb  timer.o [1]
-timer_set               0x08001b95    0x8  Code  Gb  timer.o [1]
-uip_acc32               0x200002ec    0x4  Data  Gb  uip.o [1]
+ptr_BUF_type            0x20000010    0x4  Data  Gb  main.o [1]
+rev_ID                  0x20000363    0x1  Data  Gb  macphy.o [1]
+spi_ss                  0x080013e1   0x12  Code  Gb  config.o [1]
+spi_txrx                0x080013cd    0xe  Code  Gb  config.o [1]
+timer_expired           0x08001b97   0x18  Code  Gb  timer.o [1]
+timer_reset             0x08001b85    0xa  Code  Gb  timer.o [1]
+timer_set               0x08001b7d    0x8  Code  Gb  timer.o [1]
+uip_acc32               0x200002c8    0x4  Data  Gb  uip.o [1]
 uip_add32               0x080000c1   0x4e  Code  Gb  uip.o [1]
-uip_add_rcv_nxt         0x080001d7   0x28  Code  Lc  uip.o [1]
-uip_appdata             0x200002fc    0x4  Data  Gb  uip.o [1]
-uip_arp_arpin           0x08001ccb   0xac  Code  Gb  uip_arp.o [1]
-uip_arp_init            0x08001bc9   0x26  Code  Gb  uip_arp.o [1]
-uip_arp_out             0x08001d79  0x102  Code  Gb  uip_arp.o [1]
-uip_arp_timer           0x08001bef   0x3e  Code  Gb  uip_arp.o [1]
-uip_arp_update          0x08001c2d   0x9e  Code  Lc  uip_arp.o [1]
+uip_add_rcv_nxt         0x080001dd   0x28  Code  Lc  uip.o [1]
+uip_appdata             0x20000304    0x4  Data  Gb  uip.o [1]
+uip_arp_arpin           0x08001cbd   0xb8  Code  Gb  uip_arp.o [1]
+uip_arp_init            0x08001bb1   0x28  Code  Gb  uip_arp.o [1]
+uip_arp_out             0x08001d75  0x106  Code  Gb  uip_arp.o [1]
+uip_arp_timer           0x08001bd9   0x40  Code  Gb  uip_arp.o [1]
+uip_arp_update          0x08001c19   0xa4  Code  Lc  uip_arp.o [1]
 uip_buf                 0x2000005c    0x4  Data  Gb  macphy.o [1]
-uip_callback            0x08000d99  0x250  Code  Gb  main.o [1]
+uip_callback            0x08000d7d  0x250  Code  Gb  main.o [1]
 uip_conn                0x2000030c    0x4  Data  Gb  uip.o [1]
-uip_conns               0x20000368   0x60  Data  Gb  uip.o [1]
-uip_draddr              0x2000040c    0x8  Data  Gb  uip.o [1]
-uip_ethaddr             0x2000041c    0x8  Data  Gb  uip.o [1]
-uip_flags               0x200002f0    0x1  Data  Gb  uip.o [1]
-uip_hostaddr            0x200002f4    0x8  Data  Gb  uip.o [1]
-uip_init                0x0800018f   0x24  Code  Gb  uip.o [1]
-uip_ipchksum            0x0800013d   0x1e  Code  Gb  uip.o [1]
-uip_len                 0x20000304    0x4  Data  Gb  uip.o [1]
-uip_listen              0x080001b3   0x24  Code  Gb  uip.o [1]
-uip_listenports         0x20000310   0x50  Data  Gb  uip.o [1]
-uip_netmask             0x20000414    0x8  Data  Gb  uip.o [1]
-uip_process             0x08000211  0x8f2  Code  Gb  uip.o [1]
-uip_sappdata            0x20000300    0x4  Data  Gb  uip.o [1]
-uip_send                0x08000b0b   0x1e  Code  Gb  uip.o [1]
-uip_slen                0x20000308    0x4  Data  Gb  uip.o [1]
-uip_tcpchksum           0x0800015b   0x34  Code  Gb  uip.o [1]
+uip_conns               0x20000310   0x3c  Data  Gb  uip.o [1]
+uip_draddr              0x20000390    0x4  Data  Gb  uip.o [1]
+uip_ethaddr             0x20000384    0x8  Data  Gb  uip.o [1]
+uip_flags               0x200002cc    0x1  Data  Gb  uip.o [1]
+uip_hostaddr            0x200002d0    0x4  Data  Gb  uip.o [1]
+uip_init                0x08000199   0x20  Code  Gb  uip.o [1]
+uip_ipchksum            0x08000145   0x1e  Code  Gb  uip.o [1]
+uip_len                 0x200002d4    0x2  Data  Gb  uip.o [1]
+uip_listen              0x080001b9   0x24  Code  Gb  uip.o [1]
+uip_listenports         0x200002dc   0x28  Data  Gb  uip.o [1]
+uip_netmask             0x20000394    0x4  Data  Gb  uip.o [1]
+uip_process             0x08000219  0x888  Code  Gb  uip.o [1]
+uip_sappdata            0x20000308    0x4  Data  Gb  uip.o [1]
+uip_send                0x08000aab   0x20  Code  Gb  uip.o [1]
+uip_slen                0x200002d6    0x2  Data  Gb  uip.o [1]
+uip_tcpchksum           0x08000163   0x36  Code  Gb  uip.o [1]
 uipmacaddr              0x20000000    0x8  Data  Gb  main.o [1]
-xmitlen                 0x20000424    0x4  Data  Gb  main.o [1]
+xmitlen                 0x2000038c    0x4  Data  Gb  main.o [1]
 
 
 [1] = D:\_WORK\GitHub\uIP_ENC28J60\IAR_EW6.7\EWARM\TIM_TimeBase\Obj
@@ -431,9 +431,9 @@ xmitlen                 0x20000424    0x4  Data  Gb  main.o [1]
 [4] = rt6M_tl.a
 [5] = shb_l.a
 
-  10 458 bytes of readonly  code memory
+  10 450 bytes of readonly  code memory
      134 bytes of readonly  data memory
-   2 088 bytes of readwrite data memory
+   1 944 bytes of readwrite data memory
 
 Errors: none
 Warnings: none

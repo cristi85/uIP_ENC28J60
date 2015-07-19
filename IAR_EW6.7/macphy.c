@@ -388,10 +388,12 @@ void macphy_readpkt(void)
 /* Transfers packet to ENC28J60 and initiates packet transmission */
 void macphy_sendpkt(void)
 {
-  unsigned int i;
-  unsigned char x;
-  unsigned char rlo, rhi;
-  unsigned char status[7];
+  u16 i;
+  u8 x;
+  u8 rlo, rhi;
+  u8 status[7];
+  u8* ptr_uip_appdata;
+  ptr_uip_appdata = (u8 *)(uip_appdata);
 
   /* Everything we need is in bank 0 */
   macphy_setbank(0);
@@ -443,7 +445,9 @@ void macphy_sendpkt(void)
       spi_txrx(pkt_buf[6+UIP_LLH_LEN+i]);
     }
     for (i = 0; i < uip_len - UIP_TCPIP_HLEN - UIP_LLH_LEN; i++) {
-      spi_txrx(((char *)uip_appdata)[i]);
+      //spi_txrx(((u8 *)uip_appdata)[i]);
+      spi_txrx(*ptr_uip_appdata);
+      ptr_uip_appdata++;
     }
   }
   spi_ss(1);

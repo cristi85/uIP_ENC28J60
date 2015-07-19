@@ -281,14 +281,15 @@ uip_arp_ipin(void)
 void
 uip_arp_arpin(void)
 {
-  
+  u16* ptr_BUF_opcode;
+  ptr_BUF_opcode = (u16*)&(BUF->opcode);
   if(uip_len < sizeof(struct arp_hdr)) {
     uip_len = 0;
     return;
   }
   uip_len = 0;
   
-  switch(BUF->opcode) {
+  switch(*ptr_BUF_opcode) {
   case HTONS(ARP_REQUEST):
     /* ARP request. If it asked for our address, we send out a
        reply. */
@@ -299,7 +300,7 @@ uip_arp_arpin(void)
       uip_arp_update(BUF->sipaddr, &BUF->shwaddr);
       
       /* The reply opcode is 2. */
-      BUF->opcode = HTONS(2);
+      *ptr_BUF_opcode = HTONS(2);
 
       memcpy(BUF->dhwaddr.addr, BUF->shwaddr.addr, 6);
       memcpy(BUF->shwaddr.addr, uip_ethaddr.addr, 6);

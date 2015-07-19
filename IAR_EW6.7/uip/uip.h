@@ -54,7 +54,7 @@
 #define __UIP_H__
 
 #include "uipopt.h"
-
+#include "types.h"
 /**
  * Repressentation of an IP address.
  *
@@ -1068,8 +1068,8 @@ struct uip_udp_conn *uip_udp_new(uip_ipaddr_t *ripaddr, u16_t rport);
 #ifndef HTONS
 #   if UIP_BYTE_ORDER == UIP_BIG_ENDIAN
 #      define HTONS(n) (n)
-#   else /* UIP_BYTE_ORDER == UIP_BIG_ENDIAN */
-#      define HTONS(n) (u16_t)((((u16_t) (n)) << 8) | (((u16_t) (n)) >> 8))
+#   else /* UIP_BYTE_ORDER == UIP_LITTLE_ENDIAN */
+#      define HTONS(n) (u16)((((u16) (n)) << 8) | (((u16) (n)) >> 8))
 #   endif /* UIP_BYTE_ORDER == UIP_BIG_ENDIAN */
 #else
 #error "HTONS already defined!"

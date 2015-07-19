@@ -47,6 +47,8 @@ unsigned int xmitlen;
 extern unsigned char pkt_buf[];
 #define BUF ((struct uip_eth_hdr *)&uip_buf[0])
 
+u16* ptr_BUF_type;
+
 /* Private function prototypes -----------------------------------------------*/
 void TASK_UARTCommands(void);
 
@@ -97,6 +99,8 @@ int main(void)
 
   /* Initialize the application to listen on TCP port 23 (telnet) */
   uip_listen(HTONS(23));
+  
+  ptr_BUF_type = (u16*)&(BUF->type);
   /* ===== END ETHERNET ======= */
   
   while (1)
@@ -113,17 +117,17 @@ int main(void)
 
     /* Outgoing packet? */
     if(uip_len > 0) {
-      //if((u16)(BUF->type) == htons(UIP_ETHTYPE_IP)) {
-        //uip_arp_ipin();
-        //uip_input();
+      if(*ptr_BUF_type == htons(UIP_ETHTYPE_IP)) {
+        uip_arp_ipin();
+        uip_input();
         /* If the above function invocation resulted in data that
            should be sent out on the network, the global variable
            uip_len is set to a value > 0. */
-        //if(uip_len > 0) {
-          //uip_arp_out();
-	 //macphy_sendpkt();
-        //}
-      /*} else if(BUF->type == htons(UIP_ETHTYPE_ARP))*/ {
+        if(uip_len > 0) {
+          uip_arp_out();
+	 macphy_sendpkt();
+        }
+      } else if(*ptr_BUF_type == htons(UIP_ETHTYPE_ARP)) {
         uip_arp_arpin();
         /* If the above function invocation resulted in data that
            should be sent out on the network, the global variable

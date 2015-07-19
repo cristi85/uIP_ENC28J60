@@ -1,6 +1,8 @@
+#include "types.h"
+
 /* For now, take the defaults */
-typedef unsigned int u16_t;
-typedef unsigned char u8_t;
+typedef uint16_t u16_t;
+typedef uint8_t u8_t;
 
 typedef u16_t uip_stats_t;
 
@@ -13,8 +15,6 @@ typedef u16_t uip_stats_t;
 /* Already defined a buffer. Should use that. */
 #define UIP_CONF_EXTERNAL_BUFFER 1
 extern u8_t *uip_buf;
-
-#define UIP_BYTE_ORDER UIP_LITTLE_ENDIAN
 
 typedef u16_t uip_tcp_appstate_t;
 #define UIP_APPCALL uip_callback
