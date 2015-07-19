@@ -8,6 +8,10 @@ Desktop.ini
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
 
+# IAR compiler output files
+*.o
+*.cout
+
 # Windows Installer files
 *.cab
 *.msi
