@@ -10,7 +10,7 @@ typedef u16_t uip_stats_t;
 #define UIP_CONF_MAX_CONNECTIONS 2
 
 /* We don't have room for an entire ethernet frame .. rats! */
-#define UIP_CONF_BUFSIZE     500
+#define UIP_CONF_BUFSIZE     1500
 
 /* Already defined a buffer. Should use that. */
 #define UIP_CONF_EXTERNAL_BUFFER 1

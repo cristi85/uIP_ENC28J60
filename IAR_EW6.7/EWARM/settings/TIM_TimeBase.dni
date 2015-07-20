@@ -1,5 +1,5 @@
 [DebugChecksum]
-Checksum=-397738582
+Checksum=-910014259
 [Exceptions]
 StopOnUncaught=_ 0
 StopOnThrow=_ 0
@@ -53,10 +53,6 @@ Enabled=_ 0
 Fmt0=UART_CMD_T-CMD	4	0
 Fmt1=UART_CMD_T-DATAlen	3	0
 Fmt2=struct CalibData-ADC_Samp_Avg	3	0
-Fmt3=struct arp_hdr-hwlen	4	0
-Fmt4=struct arp_hdr-hwtype	4	0
-Fmt5=struct arp_hdr-opcode	4	0
-Fmt6=struct arp_hdr-protolen	4	0
 [array_types]
 Fmt0=BYTE[4]	4	0
 Fmt1=char[11]	5	0
@@ -99,7 +95,8 @@ Fmt24={W}0:seccode	4	0
 Fmt25={W}0:temp	4	0
 Fmt26={W}0:test	4	0
 Fmt27={W}0:towrite	3	0
-Fmt28={W}1:testptr	4	0
+Fmt28={W}1:debug	3	0
+Fmt29={W}1:testptr	4	0
 [Trace2]
 Enabled=0
 ShowSource=0
@@ -125,6 +122,11 @@ ShowTimeLog=1
 SumEnabled=0
 ShowTimeSum=1
 SumSortOrder=0
+[Disassemble mode]
+mode=0
+[Breakpoints2]
+Bp0=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\main.c}.132.11" 0 0 1 "" 0 "" 0
+Count=1
 [Log file]
 LoggingEnabled=_ 0
 LogFile=_ ""
@@ -132,14 +134,10 @@ Category=_ 0
 [TermIOLog]
 LoggingEnabled=_ 0
 LogFile=_ ""
+[Aliases]
+Count=0
+SuppressDialog=0
 [CallStackLog]
 Enabled=0
 [CallStackStripe]
 ShowTiming=1
-[Disassemble mode]
-mode=0
-[Breakpoints2]
-Count=0
-[Aliases]
-Count=0
-SuppressDialog=0

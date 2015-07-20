@@ -114,6 +114,8 @@ _Bool FLAG_UART_cmd_rcv = FALSE;
 /* Public variables */
 volatile _Bool FLAG_UARTcmdRcv = FALSE;
 
+u32 current_time_sec = 0;
+
 /* External variables */
 extern _Bool Timeout_istout1;
 extern _Bool Timeout_istout2;
@@ -133,7 +135,11 @@ void DMA1_Channel2_3_IRQHandler()
 }
 void TIM2_IRQHandler(void)
 {
-
+  if(TIM_GetITStatus(TIM2, TIM_IT_Update))
+  {
+    current_time_sec++;
+    TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
+  }
 }
 
 /**

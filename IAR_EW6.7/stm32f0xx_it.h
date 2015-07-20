@@ -59,6 +59,8 @@ extern u16 BTN4_press_timer;
 
 extern _Bool flag_stopDMA;
 
+extern u32 current_time_sec;
+
 extern _Bool FLAG_50ms;
 extern _Bool FLAG_250ms;
 extern _Bool FLAG_500ms;

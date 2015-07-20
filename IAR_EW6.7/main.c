@@ -48,6 +48,7 @@ extern unsigned char pkt_buf[];
 #define BUF ((struct uip_eth_hdr *)&uip_buf[0])
 
 u16* ptr_BUF_type;
+static volatile u8 debug = 0;
 
 /* Private function prototypes -----------------------------------------------*/
 void TASK_UARTCommands(void);
@@ -80,8 +81,8 @@ int main(void)
   macphy_startrx();
 
   /* Taken almost verbatim from the uIP example code */
-  timer_set(&periodic_timer, CLOCK_SECOND / 8); /* 125uS periodic interrupts */
-  timer_set(&arp_timer, CLOCK_SECOND * 10);
+  timer_set(&periodic_timer, 1); /* 125uS periodic interrupts */
+  timer_set(&arp_timer, 10);
 
   /* Initialize the uIP ARP subsystem */
   uip_arp_init();
@@ -91,7 +92,7 @@ int main(void)
   uip_init();
 
   /* Hardcode the IP address */
-  uip_ipaddr(ipaddr, 192, 168, 0, 200);
+  uip_ipaddr(ipaddr, 192, 168, 0, 221);
   uip_sethostaddr(ipaddr);
 	  
   uip_ipaddr(ipaddr, 255, 255, 252, 0);
@@ -125,6 +126,10 @@ int main(void)
            uip_len is set to a value > 0. */
         if(uip_len > 0) {
           uip_arp_out();
+          debug = 1;
+          Serial_PrintString("uip_len=");
+          Serial_PrintNumber(uip_len);
+          Serial_PrintString(" macphy_sendpkt() \r\n");
 	 macphy_sendpkt();
         }
       } else if(*ptr_BUF_type == htons(UIP_ETHTYPE_ARP)) {
@@ -133,6 +138,7 @@ int main(void)
            should be sent out on the network, the global variable
            uip_len is set to a value > 0. */
         if(uip_len > 0) {
+          debug = 2;
 	  macphy_sendpkt();
         }
       }
@@ -146,6 +152,7 @@ int main(void)
            uip_len is set to a value > 0. */
         if(uip_len > 0) {
           uip_arp_out();
+          debug = 3;
 	  macphy_sendpkt();
         }
       }

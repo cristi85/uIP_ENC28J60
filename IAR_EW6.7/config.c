@@ -3,17 +3,19 @@
 #include "config.h"
 #include "errors.h"
 #include "timeout.h"
+#include "stm32f0xx_it.h"
 
 #define SPI_DR16     *(u16*)0x4000380C
 #define SPI_DR8      *(u8*)0x4000380C
 #define CS_HIGH()    (GPIOB->BSRR = GPIO_Pin_12)
 #define CS_LOW()     (GPIOB->BRR  = GPIO_Pin_12)
 
-typedef unsigned long clock_time_t;
+typedef u32 clock_time_t;
 
 void Config_UART1(void);
 void Config_TIM1(void);
 void Config_TIM2(void);
+void Config_TIM2_cyclic_int(void);
 void Config_TIM3(void);
 void Config_TIM6(void);
 void Config_GPIO(void);
@@ -34,6 +36,7 @@ void Config()
   Config_UART1();
   //Config_TIM1();   /* Configure TIM1_CH1 as PWM output on PA8 (PWM1 Output) */
   //Config_TIM2();   /* Configure TIM2_CH4 as PWM output on PA3 (PWM2 Output) */
+  Config_TIM2_cyclic_int();  /* Configure TIM2 to generate periodic INT @ 1 second */
   Config_TIM3();     /* Periodic 1ms interrupt */
   Config_TIM6();     /* Periodic DMA->DAC triggering */
   Config_TIM14();
@@ -246,6 +249,24 @@ void Config_TIM2()
   
   /* TIM2 enable output */
   //TIM_CtrlPWMOutputs(TIM2, ENABLE)
+}
+
+void Config_TIM2_cyclic_int()
+{
+  TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStruct;
+  /* TIM2 clock enable */
+  RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
+  
+  TIM_TimeBaseInitStruct.TIM_Prescaler = 8000;                       // This parameter can be a number between 0x0000 and 0xFFFF
+  TIM_TimeBaseInitStruct.TIM_CounterMode = TIM_CounterMode_Up;       // This parameter can be a value of @ref TIM_Counter_Mode
+  TIM_TimeBaseInitStruct.TIM_Period = 1000;                          // This parameter must be a number between 0x0000 and 0xFFFF, fclk=1M, 1000000->T=1s
+  TIM_TimeBaseInitStruct.TIM_ClockDivision = TIM_CKD_DIV1;           // This parameter can be a value of @ref TIM_Clock_Division_CKD
+  TIM_TimeBaseInitStruct.TIM_RepetitionCounter = 0;                  // This parameter is valid only for TIM1
+  TIM_TimeBaseInit(TIM2, &TIM_TimeBaseInitStruct);
+  
+  /* TIM2 enable counter */
+  TIM_Cmd(TIM2, ENABLE);
+  TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE);
 }
 
 /* Periodic 1ms interrupt */
@@ -498,7 +519,7 @@ void spi_ss(unsigned char x)
 clock_time_t clock_time(void)
 {
   clock_time_t seconds;
-
+  seconds = (clock_time_t)current_time_sec;
   return seconds;
 } 
 
