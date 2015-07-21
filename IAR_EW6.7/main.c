@@ -48,7 +48,6 @@ extern unsigned char pkt_buf[];
 #define BUF ((struct uip_eth_hdr *)&uip_buf[0])
 
 u16* ptr_BUF_type;
-static volatile u8 debug = 0;
 
 /* Private function prototypes -----------------------------------------------*/
 void TASK_UARTCommands(void);
@@ -126,10 +125,6 @@ int main(void)
            uip_len is set to a value > 0. */
         if(uip_len > 0) {
           uip_arp_out();
-          debug = 1;
-          Serial_PrintString("uip_len=");
-          Serial_PrintNumber(uip_len);
-          Serial_PrintString(" macphy_sendpkt() \r\n");
 	 macphy_sendpkt();
         }
       } else if(*ptr_BUF_type == htons(UIP_ETHTYPE_ARP)) {
@@ -138,7 +133,6 @@ int main(void)
            should be sent out on the network, the global variable
            uip_len is set to a value > 0. */
         if(uip_len > 0) {
-          debug = 2;
 	  macphy_sendpkt();
         }
       }
@@ -152,7 +146,6 @@ int main(void)
            uip_len is set to a value > 0. */
         if(uip_len > 0) {
           uip_arp_out();
-          debug = 3;
 	  macphy_sendpkt();
         }
       }
@@ -261,8 +254,7 @@ int main(void)
  */
 void uip_callback(void)
 {
-  unsigned int ptr, ptr0;
-  unsigned char tmp, *appdata;
+  u8 *appdata;
   u16 uipdatalen;
 
   /* Assign this so as to avoid typecasting */
@@ -351,11 +343,11 @@ void uip_callback(void)
   if (uip_newdata()) {
 
     //cprintf(C"New data on connection. uip_datalen() == %u\r\n", uip_datalen());
-    Serial_PrintString("New data on connection. uip_datalen() ==  ");
-    Serial_PrintNumber(uip_datalen());
+    uipdatalen = uip_datalen();
+    Serial_PrintString("New data on connection. uip_datalen()=");
+    Serial_PrintNumber(uipdatalen);
     Serial_PrintString("\r\n");
     
-    uipdatalen = uip_datalen();
     /* Since we're using telnet to connect to this application, we need to discard */
     /* the TELNET option negotiation on first connect */
     if (appdata[0] == 0xff) {
@@ -363,30 +355,6 @@ void uip_callback(void)
       Serial_PrintString("Skipping TELNET option negotiation\r\n");
 
     } else {
-      ptr = 0;
-      /* Find the last character to reverse */
-      while (ptr < uip_datalen()) {
-	if ((appdata[ptr] == '\r') ||
-	    (appdata[ptr] == '\n')) {
-	  /* Back up and done! */
-	  ptr--;
-	  break;
-	} else {
-	  ptr++;
-	}
-      }
-      
-      /* Reverse the characters */
-      ptr0 = ptr;
-      while (ptr > (ptr0 - ptr)) {
-	/* Save off the mirror character */
-	tmp = appdata[ptr0 - ptr];
-	/* Reassign it to character at ptr */
-	appdata[ptr0 - ptr] = appdata[ptr];
-	/* Reassign ptr character to the mirror's old value and decrement */
-	appdata[ptr--] = tmp;
-      }
-      
       /* Transmit it to the peer */
       xmitlen = uip_datalen();
       uip_send(appdata, xmitlen);

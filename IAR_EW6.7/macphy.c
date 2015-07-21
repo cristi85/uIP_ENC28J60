@@ -57,7 +57,7 @@ unsigned char pkt_buf[MAX_ETH_FRAMELEN + 6 + 2];
 #define UIP_TCPIP_HLEN UIP_IPTCPH_LEN
 #define UIP_LLH_LEN     14 /* Ethernet */
 
-extern unsigned int uip_len;
+extern uint16_t uip_len;
 extern void *uip_appdata;
 extern unsigned char *uip_buf = &pkt_buf[6];
 
@@ -388,12 +388,12 @@ void macphy_readpkt(void)
 /* Transfers packet to ENC28J60 and initiates packet transmission */
 void macphy_sendpkt(void)
 {
-  u16 i;
+  uint16_t i;
   u8 x;
   u8 rlo, rhi;
   u8 status[7];
-  u8* ptr_uip_appdata;
-  ptr_uip_appdata = (u8 *)(uip_appdata);
+  //u8* ptr_uip_appdata;
+  //ptr_uip_appdata = (u8 *)(uip_appdata);
 
   /* Everything we need is in bank 0 */
   macphy_setbank(0);
@@ -412,6 +412,7 @@ void macphy_sendpkt(void)
     if (x & TXERIF) {
       /* Chip is stuck. Reset */
       //cprintf(C" -> MAC TX is stuck. Reset. \r\n");
+      Serial_PrintString("MAC TX is stuck. Reset. \r\n");
       macphy_setbit(ECON1, TXRST);
       macphy_clearbit(ECON1, TXRST);
       macphy_clearbit(EIR, TXERIF);
@@ -422,7 +423,10 @@ void macphy_sendpkt(void)
   /* Set the SPI write buffer pointer location */
   macphy_writereg(EWRPTL, 0x00);
   macphy_writereg(EWRPTH, 0x10);
-
+  
+  //Serial_PrintString("macphy_sendpkt() uip_len=");
+  //Serial_PrintNumber(uip_len);
+  //Serial_PrintString("\r\n");
   /* Write the link-layer header to the chip */
   /* SPI Write Pointer Start (ETXSTL) already set by macphy_init() */
   spi_ss(0);
@@ -445,9 +449,9 @@ void macphy_sendpkt(void)
       spi_txrx(pkt_buf[6+UIP_LLH_LEN+i]);
     }
     for (i = 0; i < uip_len - UIP_TCPIP_HLEN - UIP_LLH_LEN; i++) {
-      //spi_txrx(((u8 *)uip_appdata)[i]);
-      spi_txrx(*ptr_uip_appdata);
-      ptr_uip_appdata++;
+      spi_txrx(((u8 *)uip_appdata)[i]);
+      //spi_txrx(*ptr_uip_appdata);
+      //ptr_uip_appdata++;
     }
   }
   spi_ss(1);
