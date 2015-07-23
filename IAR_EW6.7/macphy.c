@@ -202,9 +202,9 @@ void macphy_pktdec(void)
   macphy_setbit(ECON2, PKTDEC);
 }
 
-unsigned int macphy_pktcnt(void)
+u8 macphy_pktcnt(void)
 {
-  unsigned int cnt;
+  u32 cnt;
 
   macphy_setbank(1);
 
@@ -214,7 +214,7 @@ unsigned int macphy_pktcnt(void)
   return cnt;
 }
 
-void macphy_setbit(unsigned int reg, unsigned int val)
+void macphy_setbit(u8 reg, u8 val)
 {
   /* CAUTION: You must set the proper bank before calling this routine */
 
@@ -224,7 +224,7 @@ void macphy_setbit(unsigned int reg, unsigned int val)
   spi_ss(1);
 }
 
-void macphy_clearbit(unsigned int reg, unsigned int val)
+void macphy_clearbit(u8 reg, u8 val)
 {
   /* CAUTION: You must set the proper bank before calling this routine */
 
@@ -234,7 +234,7 @@ void macphy_clearbit(unsigned int reg, unsigned int val)
   spi_ss(1);
 }
 
-void macphy_writereg(unsigned int reg, unsigned int val)
+void macphy_writereg(u8 reg, u8 val)
 {  
   /* CAUTION: You must set the proper bank before calling this routine */
 
@@ -244,9 +244,9 @@ void macphy_writereg(unsigned int reg, unsigned int val)
   spi_ss(1);
 }
 
-unsigned int macphy_eth_readreg(unsigned int reg)
+u8 macphy_eth_readreg(u8 reg)
 {
-  unsigned int x;
+  u8 x;
 
   /* CAUTION: You must set the proper bank before calling this routine */
 
@@ -258,9 +258,9 @@ unsigned int macphy_eth_readreg(unsigned int reg)
   return x;
 }
 
-unsigned int macphy_mac_readreg(unsigned int reg)
+u8 macphy_mac_readreg(u8 reg)
 {
-  unsigned int x;
+  u8 x;
 
   /* CAUTION: You must set the proper bank before calling this routine */
 
@@ -289,7 +289,7 @@ void macphy_readback(void)
 }
 
 /* Sets the bank bits of the ENC28J60. Valid values are 0-3 */
-void macphy_setbank(unsigned int bank)
+void macphy_setbank(u8 bank)
 {
 
   switch (bank) {
@@ -317,8 +317,8 @@ void macphy_setbank(unsigned int bank)
 /* Reads packet from the ENC28J60 and decrements pktcnt */
 void macphy_readpkt(void)
 {
-  unsigned char rlo, rhi;
-  unsigned int i, plen, nxtpkt, rptr;
+  u8 rlo, rhi;
+  u32 i, plen, nxtpkt, rptr;
 
   macphy_setbank(0);
   /* Retrieve the rx pointer location */
@@ -388,7 +388,7 @@ void macphy_readpkt(void)
 /* Transfers packet to ENC28J60 and initiates packet transmission */
 void macphy_sendpkt(void)
 {
-  uint16_t i;
+  u16 i;
   u8 x;
   u8 rlo, rhi;
   u8 status[7];

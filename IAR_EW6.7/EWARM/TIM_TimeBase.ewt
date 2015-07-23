@@ -1100,6 +1100,9 @@
   <group>
     <name>uIP</name>
     <file>
+      <name>$PROJ_DIR$\..\uip\psock.c</name>
+    </file>
+    <file>
       <name>$PROJ_DIR$\..\uip\timer.c</name>
     </file>
     <file>
@@ -1130,6 +1133,9 @@
       <name>$PROJ_DIR$\..\main.c</name>
     </file>
     <file>
+      <name>$PROJ_DIR$\..\mem.c</name>
+    </file>
+    <file>
       <name>$PROJ_DIR$\..\serial.c</name>
     </file>
     <file>
@@ -1143,6 +1149,21 @@
     </file>
     <file>
       <name>$PROJ_DIR$\..\timeout.c</name>
+    </file>
+  </group>
+  <group>
+    <name>webserver</name>
+    <file>
+      <name>$PROJ_DIR$\..\webserver\http-strings.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\webserver\httpd-cgi.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\webserver\httpd-fs.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\webserver\httpd.c</name>
     </file>
   </group>
 </project>

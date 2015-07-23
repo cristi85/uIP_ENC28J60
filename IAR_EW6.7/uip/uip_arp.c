@@ -63,9 +63,7 @@
 
 #include <string.h>
 #include "types.h"
-   
-extern void memset(void*, u8, u8);
-extern void memcpy(void*, const void*, u8);
+#include "mem.h"
    
 struct arp_hdr {
   struct uip_eth_hdr ethhdr;

@@ -61,7 +61,7 @@
    LC_SET() is done within another switch() statement! */
 
 /** \hideinitializer */
-typedef unsigned short lc_t;
+typedef u32 lc_t;
 
 #define LC_INIT(s) s = 0;
 

@@ -83,6 +83,7 @@
 
 #include "uipopt.h"
 #include "pt.h"
+#include "types.h"
 
  /*
  * The structure that holds the state of a buffer.
@@ -93,8 +94,8 @@
  *
  */
 struct psock_buf {
-  u8_t *ptr;
-  unsigned short left;
+  u8 *ptr;
+  u32 left;
 };
 
 /**
@@ -107,18 +108,18 @@ struct psock {
   struct pt pt, psockpt; /* Protothreads - one that's using the psock
 			    functions, and one that runs inside the
 			    psock functions. */
-  const u8_t *sendptr;   /* Pointer to the next data to be sent. */
-  u8_t *readptr;         /* Pointer to the next data to be read. */
+  const u8 *sendptr;   /* Pointer to the next data to be sent. */
+  u8 *readptr;         /* Pointer to the next data to be read. */
   
   char *bufptr;          /* Pointer to the buffer used for buffering
 			    incoming data. */
   
-  u16_t sendlen;         /* The number of bytes left to be sent. */
-  u16_t readlen;         /* The number of bytes left to be read. */
+  u16 sendlen;         /* The number of bytes left to be sent. */
+  u16 readlen;         /* The number of bytes left to be read. */
 
   struct psock_buf buf;  /* The structure holding the state of the
 			    input buffer. */
-  unsigned int bufsize;  /* The size of the input buffer. */
+  u16 bufsize;  /* The size of the input buffer. */
   
   unsigned char state;   /* The state of the protosocket. */
 };
@@ -157,7 +158,7 @@ void psock_init(struct psock *psock, char *buffer, unsigned int buffersize);
  */
 #define PSOCK_BEGIN(psock) PT_BEGIN(&((psock)->pt))
 
-PT_THREAD(psock_send(struct psock *psock, const char *buf, unsigned int len));
+PT_THREAD(psock_send(struct psock *psock, const char *buf, u16 len));
 /**
  * Send data.
  *
@@ -192,7 +193,7 @@ PT_THREAD(psock_send(struct psock *psock, const char *buf, unsigned int len));
     PT_WAIT_THREAD(&((psock)->pt), psock_send(psock, str, strlen(str)))
 
 PT_THREAD(psock_generator_send(struct psock *psock,
-				unsigned short (*f)(void *), void *arg));
+				u32 (*f)(void *), void *arg));
 
 /**
  * \brief      Generate data with a function and send it

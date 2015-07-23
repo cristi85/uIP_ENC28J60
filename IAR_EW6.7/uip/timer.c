@@ -47,6 +47,7 @@
 
 #include "clock.h"
 #include "timer.h"
+#include "types.h"
 
 /*---------------------------------------------------------------------------*/
 /**
@@ -117,7 +118,7 @@ timer_restart(struct timer *t)
  * \return Non-zero if the timer has expired, zero otherwise.
  *
  */
-int
+u8
 timer_expired(struct timer *t)
 {
   return (clock_time_t)(clock_time() - t->start) >= (clock_time_t)t->interval;

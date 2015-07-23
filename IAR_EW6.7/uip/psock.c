@@ -34,11 +34,13 @@
  */
 
 #include <stdio.h>
-#include <string.h>
+#include "..\string.h"
+#include "..\mem.h"
 
 #include "uipopt.h"
 #include "psock.h"
 #include "uip.h"
+#include "types.h"
 
 #define STATE_NONE 0
 #define STATE_ACKED 1
@@ -73,15 +75,15 @@
 /*---------------------------------------------------------------------------*/
 static void
 buf_setup(struct psock_buf *buf,
-	  u8_t *bufptr, u16_t bufsize)
+	  u8 *bufptr, u16 bufsize)
 {
   buf->ptr = bufptr;
   buf->left = bufsize;
 }
 /*---------------------------------------------------------------------------*/
-static u8_t
-buf_bufdata(struct psock_buf *buf, u16_t len,
-	    u8_t **dataptr, u16_t *datalen)
+static u8
+buf_bufdata(struct psock_buf *buf, u16 len,
+	    u8 **dataptr, u16 *datalen)
 {
   if(*datalen < buf->left) {
     memcpy(buf->ptr, *dataptr, *datalen);
@@ -107,11 +109,11 @@ buf_bufdata(struct psock_buf *buf, u16_t len,
   }
 }
 /*---------------------------------------------------------------------------*/
-static u8_t
-buf_bufto(register struct psock_buf *buf, u8_t endmarker,
-	  register u8_t **dataptr, register u16_t *datalen)
+static u8
+buf_bufto(register struct psock_buf *buf, u8 endmarker,
+	  register u8 **dataptr, register u16 *datalen)
 {
-  u8_t c;
+  u8 c;
   while(buf->left > 0 && *datalen > 0) {
     c = *buf->ptr = **dataptr;
     ++*dataptr;
@@ -174,7 +176,7 @@ data_acked(register struct psock *s)
 }
 /*---------------------------------------------------------------------------*/
 PT_THREAD(psock_send(register struct psock *s, const char *buf,
-		     unsigned int len))
+		     u16 len))
 {
   PT_BEGIN(&s->psockpt);
 
@@ -185,7 +187,7 @@ PT_THREAD(psock_send(register struct psock *s, const char *buf,
 
   /* Save the length of and a pointer to the data that is to be
      sent. */
-  s->sendptr = buf;
+  s->sendptr = (u8 const*)buf;
   s->sendlen = len;
 
   s->state = STATE_NONE;
@@ -213,7 +215,7 @@ PT_THREAD(psock_send(register struct psock *s, const char *buf,
 }
 /*---------------------------------------------------------------------------*/
 PT_THREAD(psock_generator_send(register struct psock *s,
-			       unsigned short (*generate)(void *), void *arg))
+			       u32 (*generate)(void *), void *arg))
 {
   PT_BEGIN(&s->psockpt);
 
@@ -273,7 +275,7 @@ PT_THREAD(psock_readto(register struct psock *psock, unsigned char c))
 {
   PT_BEGIN(&psock->psockpt);
 
-  buf_setup(&psock->buf, psock->bufptr, psock->bufsize);
+  buf_setup(&psock->buf, (u8_t *)(psock->bufptr), psock->bufsize);
   
   /* XXX: Should add buf_checkmarker() before do{} loop, if
      incoming data has been handled while waiting for a write. */
@@ -300,7 +302,7 @@ PT_THREAD(psock_readbuf(register struct psock *psock))
 {
   PT_BEGIN(&psock->psockpt);
 
-  buf_setup(&psock->buf, psock->bufptr, psock->bufsize);
+  buf_setup(&psock->buf, (u8_t *)(psock->bufptr), psock->bufsize);
   
   /* XXX: Should add buf_checkmarker() before do{} loop, if
      incoming data has been handled while waiting for a write. */
@@ -331,7 +333,7 @@ psock_init(register struct psock *psock, char *buffer, unsigned int buffersize)
   psock->readlen = 0;
   psock->bufptr = buffer;
   psock->bufsize = buffersize;
-  buf_setup(&psock->buf, buffer, buffersize);
+  buf_setup(&psock->buf, (u8_t *)(buffer), buffersize);
   PT_INIT(&psock->pt);
   PT_INIT(&psock->psockpt);
 }
