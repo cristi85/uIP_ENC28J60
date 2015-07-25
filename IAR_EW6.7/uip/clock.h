@@ -53,6 +53,7 @@
 #define __CLOCK_H__
 
 #include "clock-arch.h"
+#include "types.h"
 
 /**
  * Initialize the clock library.
@@ -70,7 +71,7 @@ void clock_init(void);
  *
  * \return The current clock time, measured in system ticks.
  */
-clock_time_t clock_time(void);
+u32 clock_time(void);
 
 /**
  * A second, measured in system clock time.
@@ -80,7 +81,7 @@ clock_time_t clock_time(void);
 #ifdef CLOCK_CONF_SECOND
 #define CLOCK_SECOND CLOCK_CONF_SECOND
 #else
-#define CLOCK_SECOND (clock_time_t)32
+#define CLOCK_SECOND (u32)32
 #endif
 
 #endif /* __CLOCK_H__ */

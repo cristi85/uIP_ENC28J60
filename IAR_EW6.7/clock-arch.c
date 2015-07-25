@@ -40,6 +40,7 @@
 #include "uip/clock.h"
 #include "clock-arch.h"
 #include "maxq2000.h"
+#include "types.h"
 
 void clock_init(void)
 {
@@ -73,9 +74,9 @@ void clock_init(void)
   RCNT = 0x8001;
 }
 
-clock_time_t clock_time(void)
+u32 clock_time(void)
 {
-  clock_time_t seconds;
+  u32 seconds;
 
   /* Wait for the Ready bit to go low, signifying the start of an update */
   while (RCNT & 0x0010);
@@ -84,7 +85,7 @@ clock_time_t clock_time(void)
   while (!(RCNT & 0x0010));
 
   /* Read the values */
-  seconds = (unsigned long)(RTSH & 0x0fff) << 16;
+  seconds = (u32)(RTSH & 0x0fff) << 16;
   // seconds <<= 16;
   seconds += (RTSL << 4);
   seconds += (RTSS >> 4);

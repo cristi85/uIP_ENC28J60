@@ -37,14 +37,15 @@
 
 #include "..\uip\psock.h"
 #include "httpd-fs.h"
+#include "types.h"
 
 struct httpd_state {
-  unsigned char timer;
+  u8 timer;
   struct psock sin, sout;
   struct pt outputpt, scriptpt;
-  char inputbuf[50];
+  u8 inputbuf[50];
   char filename[20];
-  char state;
+  u8 state;
   struct httpd_fs_file file;
   u32 len;
   char *scriptptr;

@@ -73,11 +73,11 @@
  * \hideinitializer
  */
 struct timer {
-  clock_time_t start;
-  clock_time_t interval;
+  u32 start;
+  u32 interval;
 };
 
-void timer_set(struct timer *t, clock_time_t interval);
+void timer_set(struct timer *t, u32 interval);
 void timer_reset(struct timer *t);
 void timer_restart(struct timer *t);
 u8 timer_expired(struct timer *t);

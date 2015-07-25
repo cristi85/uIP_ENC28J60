@@ -254,7 +254,7 @@ PT_THREAD(handle_input(struct httpd_state *s))
   PSOCK_READTO(&s->sin, ISO_space);
 
   
-  if(strncmp(s->inputbuf, http_get, 4) != 0) {
+  if(strncmp((const char *)s->inputbuf, http_get, 4) != 0) {
     PSOCK_CLOSE_EXIT(&s->sin);
   }
   PSOCK_READTO(&s->sin, ISO_space);
@@ -267,7 +267,7 @@ PT_THREAD(handle_input(struct httpd_state *s))
     strncpy(s->filename, http_index_html, sizeof(s->filename));
   } else {
     s->inputbuf[PSOCK_DATALEN(&s->sin) - 1] = 0;
-    strncpy(s->filename, &s->inputbuf[0], sizeof(s->filename));
+    strncpy(s->filename, (const char *)&s->inputbuf[0], sizeof(s->filename));
   }
 
   /*  httpd_log_file(uip_conn->ripaddr, s->filename);*/
@@ -277,7 +277,7 @@ PT_THREAD(handle_input(struct httpd_state *s))
   while(1) {
     PSOCK_READTO(&s->sin, ISO_nl);
 
-    if(strncmp(s->inputbuf, http_referer, 8) == 0) {
+    if(strncmp((const char *)s->inputbuf, http_referer, 8) == 0) {
       s->inputbuf[PSOCK_DATALEN(&s->sin) - 2] = 0;
       /*      httpd_log(&s->inputbuf[9]);*/
     }

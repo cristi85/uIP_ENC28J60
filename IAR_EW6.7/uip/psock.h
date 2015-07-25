@@ -111,7 +111,7 @@ struct psock {
   const u8 *sendptr;   /* Pointer to the next data to be sent. */
   u8 *readptr;         /* Pointer to the next data to be read. */
   
-  char *bufptr;          /* Pointer to the buffer used for buffering
+  u8 *bufptr;          /* Pointer to the buffer used for buffering
 			    incoming data. */
   
   u16 sendlen;         /* The number of bytes left to be sent. */
@@ -124,7 +124,7 @@ struct psock {
   unsigned char state;   /* The state of the protosocket. */
 };
 
-void psock_init(struct psock *psock, char *buffer, unsigned int buffersize);
+void psock_init(struct psock *psock, u8 *buffer, u32 buffersize);
 /**
  * Initialize a protosocket.
  *

@@ -44,7 +44,7 @@ struct uip_eth_addr uipmacaddr = {{0x02, 0x01, 0x02, 0x03, 0x04, 0x05}};
 struct timer periodic_timer, arp_timer;
 uip_ipaddr_t ipaddr;
 /* Re-transmit buffer length */
-unsigned int xmitlen;
+u32 xmitlen;
 extern unsigned char pkt_buf[];
 #define BUF ((struct uip_eth_hdr *)&uip_buf[0])
 
@@ -202,7 +202,7 @@ int main(void)
        To reconfigure the default setting of SystemInit() function, refer to
        system_stm32f0xx.c file
      */
-  unsigned int i;
+  u32 i;
   
   Config();
   SystemCoreClockUpdate();

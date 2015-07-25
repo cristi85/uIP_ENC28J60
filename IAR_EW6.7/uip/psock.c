@@ -110,8 +110,8 @@ buf_bufdata(struct psock_buf *buf, u16 len,
 }
 /*---------------------------------------------------------------------------*/
 static u8
-buf_bufto(register struct psock_buf *buf, u8 endmarker,
-	  register u8 **dataptr, register u16 *datalen)
+buf_bufto(struct psock_buf *buf, u8 endmarker,
+	  u8 **dataptr, u16 *datalen)
 {
   u8 c;
   while(buf->left > 0 && *datalen > 0) {
@@ -144,7 +144,7 @@ buf_bufto(register struct psock_buf *buf, u8 endmarker,
 }
 /*---------------------------------------------------------------------------*/
 static char
-send_data(register struct psock *s)
+send_data(struct psock *s)
 {
   if(s->state != STATE_DATA_SENT || uip_rexmit()) {
     if(s->sendlen > uip_mss()) {
@@ -159,7 +159,7 @@ send_data(register struct psock *s)
 }
 /*---------------------------------------------------------------------------*/
 static char
-data_acked(register struct psock *s)
+data_acked(struct psock *s)
 {
   if(s->state == STATE_DATA_SENT && uip_acked()) {
     if(s->sendlen > uip_mss()) {
@@ -175,7 +175,7 @@ data_acked(register struct psock *s)
   return 0;
 }
 /*---------------------------------------------------------------------------*/
-PT_THREAD(psock_send(register struct psock *s, const char *buf,
+PT_THREAD(psock_send(struct psock *s, const char *buf,
 		     u16 len))
 {
   PT_BEGIN(&s->psockpt);
@@ -214,7 +214,7 @@ PT_THREAD(psock_send(register struct psock *s, const char *buf,
   PT_END(&s->psockpt);
 }
 /*---------------------------------------------------------------------------*/
-PT_THREAD(psock_generator_send(register struct psock *s,
+PT_THREAD(psock_generator_send(struct psock *s,
 			       u32 (*generate)(void *), void *arg))
 {
   PT_BEGIN(&s->psockpt);
@@ -271,7 +271,7 @@ psock_newdata(struct psock *s)
   }
 }
 /*---------------------------------------------------------------------------*/
-PT_THREAD(psock_readto(register struct psock *psock, unsigned char c))
+PT_THREAD(psock_readto(struct psock *psock, unsigned char c))
 {
   PT_BEGIN(&psock->psockpt);
 
@@ -298,7 +298,7 @@ PT_THREAD(psock_readto(register struct psock *psock, unsigned char c))
   PT_END(&psock->psockpt);
 }
 /*---------------------------------------------------------------------------*/
-PT_THREAD(psock_readbuf(register struct psock *psock))
+PT_THREAD(psock_readbuf(struct psock *psock))
 {
   PT_BEGIN(&psock->psockpt);
 
@@ -310,7 +310,7 @@ PT_THREAD(psock_readbuf(register struct psock *psock))
   do {
     if(psock->readlen == 0) {
       PT_WAIT_UNTIL(&psock->psockpt, psock_newdata(psock));
-      printf("Waited for newdata\n");
+      //printfss("Waited for newdata\n");
       psock->state = STATE_READ;
       psock->readptr = (u8_t *)uip_appdata;
       psock->readlen = uip_datalen();
@@ -327,13 +327,13 @@ PT_THREAD(psock_readbuf(register struct psock *psock))
 }
 /*---------------------------------------------------------------------------*/
 void
-psock_init(register struct psock *psock, char *buffer, unsigned int buffersize)
+psock_init(struct psock *psock, u8 *buffer, u32 buffersize)
 {
   psock->state = STATE_NONE;
   psock->readlen = 0;
   psock->bufptr = buffer;
   psock->bufsize = buffersize;
-  buf_setup(&psock->buf, (u8_t *)(buffer), buffersize);
+  buf_setup(&psock->buf, (u8 *)(buffer), buffersize);
   PT_INIT(&psock->pt);
   PT_INIT(&psock->psockpt);
 }

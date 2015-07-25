@@ -4,7 +4,7 @@
 #ifndef __CLOCK_ARCH_H__
 #define __CLOCK_ARCH_H__
 
-typedef unsigned long clock_time_t;
+//typedef unsigned long clock_time_t;
 
 /* The RTC has a sub-second counter as well, but 32 bits of seconds plus  */
 /*  the 8 bits of RTSS would have to be stored as a 64-bit entity         */
