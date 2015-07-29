@@ -281,7 +281,7 @@ PT_THREAD(psock_readto(struct psock *psock, unsigned char c));
  */
 #define PSOCK_DATALEN(psock) psock_datalen(psock)
 
-u16_t psock_datalen(struct psock *psock);
+u16 psock_datalen(struct psock *psock);
 
 /**
  * Exit the protosocket's protothread.

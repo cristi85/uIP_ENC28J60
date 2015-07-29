@@ -1,3 +1,4 @@
+#include "webserver\webserver.h"
 #include "types.h"
 
 /* For now, take the defaults */
@@ -16,7 +17,7 @@ typedef u16_t uip_stats_t;
 #define UIP_CONF_EXTERNAL_BUFFER 1
 extern u8_t *uip_buf;
 
-typedef u16_t uip_tcp_appstate_t;
-#define UIP_APPCALL uip_callback
-void uip_callback(void);
+//typedef u16 uip_tcp_appstate_t;
+//#define UIP_APPCALL uip_callback
+//void uip_callback(void);
 
