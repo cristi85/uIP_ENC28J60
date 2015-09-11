@@ -34,13 +34,13 @@ void Config()
   
   Config_GPIO();
   Config_UART1();
-  //Config_TIM1();   /* Configure TIM1_CH1 as PWM output on PA8 (PWM1 Output) */
-  //Config_TIM2();   /* Configure TIM2_CH4 as PWM output on PA3 (PWM2 Output) */
+  //Config_TIM1();           /* Configure TIM1_CH1 as PWM output on PA8 (PWM1 Output) */
+  //Config_TIM2();           /* Configure TIM2_CH4 as PWM output on PA3 (PWM2 Output) */
   Config_TIM2_cyclic_int();  /* Configure TIM2 to generate periodic INT @ 1 second */
-  Config_TIM3();     /* Periodic 1ms interrupt */
-  Config_TIM6();     /* Periodic DMA->DAC triggering */
-  Config_TIM14();
-  Config_TIM15();    /* for delay_10us */
+  Config_TIM3();             /* Periodic 1ms interrupt */
+  //Config_TIM6();           /* Periodic DMA->DAC triggering */
+  Config_TIM14();            /* for DELAY_US(us) macro */
+  Config_TIM15();            /* used in delay_10us(u16) */
   //Config_ADC1_DMA();
   //Config_SPI1();
   Config_SPI2();
@@ -257,7 +257,7 @@ void Config_TIM2_cyclic_int()
   /* TIM2 clock enable */
   RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
   
-  TIM_TimeBaseInitStruct.TIM_Prescaler = 8000;                       // This parameter can be a number between 0x0000 and 0xFFFF
+  TIM_TimeBaseInitStruct.TIM_Prescaler = 48000;                      // This parameter can be a number between 0x0000 and 0xFFFF
   TIM_TimeBaseInitStruct.TIM_CounterMode = TIM_CounterMode_Up;       // This parameter can be a value of @ref TIM_Counter_Mode
   TIM_TimeBaseInitStruct.TIM_Period = 1000;                          // This parameter must be a number between 0x0000 and 0xFFFF, fclk=1M, 1000000->T=1s
   TIM_TimeBaseInitStruct.TIM_ClockDivision = TIM_CKD_DIV1;           // This parameter can be a value of @ref TIM_Clock_Division_CKD
@@ -301,9 +301,9 @@ void Config_TIM14()
   /* TIM14 clock enable */
   RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM14, ENABLE);
   
-  TIM_TimeBaseInitStruct.TIM_Prescaler = 48000;                      // This parameter can be a number between 0x0000 and 0xFFFF
+  TIM_TimeBaseInitStruct.TIM_Prescaler = 48;                         // This parameter can be a number between 0x0000 and 0xFFFF
   TIM_TimeBaseInitStruct.TIM_CounterMode = TIM_CounterMode_Up;       // This parameter can be a value of @ref TIM_Counter_Mode
-  TIM_TimeBaseInitStruct.TIM_Period = 0xFFFF;                        // This parameter must be a number between 0x0000 and 0xFFFF
+  TIM_TimeBaseInitStruct.TIM_Period = 1;                             // This parameter must be a number between 0x0000 and 0xFFFF
   TIM_TimeBaseInitStruct.TIM_ClockDivision = TIM_CKD_DIV1;           // This parameter can be a value of @ref TIM_Clock_Division_CKD
   TIM_TimeBaseInitStruct.TIM_RepetitionCounter = 0x00;               // This parameter is valid only for TIM1
   TIM_TimeBaseInit(TIM14, &TIM_TimeBaseInitStruct);
@@ -423,7 +423,7 @@ void Config_SPI2()
   SPI_InitStructure.SPI_CPOL = SPI_CPOL_Low;
   SPI_InitStructure.SPI_CPHA = SPI_CPHA_1Edge;
   SPI_InitStructure.SPI_NSS = SPI_NSS_Soft;  // CS pin controlled by user SW
-  SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_8;  //128: 375kHZ, 8: 6MHz, 4: 12MHz, 2: 24MHz
+  SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_16;  //128: 375kHZ, 32:1.5MHz, 16:3MHz, 8:6MHz, 4:12MHz, 2:24MHz
   SPI_InitStructure.SPI_FirstBit = SPI_FirstBit_MSB;
   SPI_InitStructure.SPI_CRCPolynomial = 7;
   SPI_Init(SPI2, &SPI_InitStructure);
