@@ -72,15 +72,15 @@
  *
  * \hideinitializer
  */
-struct timer {
+typedef struct{
   u32 start;
   u32 interval;
-};
+}timer_t;
 
-void timer_set(struct timer *t, u32 interval);
-void timer_reset(struct timer *t);
-void timer_restart(struct timer *t);
-u8 timer_expired(struct timer *t);
+void timer_set(timer_t *t, u32 interval);
+void timer_reset(timer_t *t);
+void timer_restart(timer_t *t);
+u8 timer_expired(timer_t *t);
 
 #endif /* __TIMER_H__ */
 

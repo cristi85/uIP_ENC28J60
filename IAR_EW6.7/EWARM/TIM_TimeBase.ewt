@@ -1131,6 +1131,9 @@
     </file>
     <file>
       <name>$PROJ_DIR$\..\main.c</name>
+      <configuration>
+        <name>TIM_TimeBase</name>
+      </configuration>
     </file>
     <file>
       <name>$PROJ_DIR$\..\mem.c</name>

@@ -1,5 +1,5 @@
 [DebugChecksum]
-Checksum=88149736
+Checksum=-1216946931
 [Exceptions]
 StopOnUncaught=_ 0
 StopOnThrow=_ 0
@@ -60,14 +60,15 @@ Fmt0=BYTE[4]	4	0
 Fmt1=char[11]	5	0
 Fmt2=char[16]	5	0
 Fmt3=u16[100]	3	0
-Fmt4=u32[10]	4	0
-Fmt5=u8[10]	4	0
-Fmt6=u8[16]	4	0
-Fmt7=u8[24]	4	0
-Fmt8=u8[4]	4	0
-Fmt9=u8_t[6]	3	0
-Fmt10=unsigned char[24]	4	0
-Fmt11=unsigned char[508]	5	0
+Fmt4=u16_t[2]	4	0
+Fmt5=u32[10]	4	0
+Fmt6=u8[10]	4	0
+Fmt7=u8[16]	4	0
+Fmt8=u8[24]	4	0
+Fmt9=u8[4]	4	0
+Fmt10=u8_t[6]	3	0
+Fmt11=unsigned char[24]	4	0
+Fmt12=unsigned char[508]	5	0
 [watch_formats]
 Fmt0={W}0:Altitude_frac	3	0
 Fmt1={W}0:CalibData_Status	3	0

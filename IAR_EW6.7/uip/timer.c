@@ -62,7 +62,7 @@
  *
  */
 void
-timer_set(struct timer *t, u32 interval)
+timer_set(timer_t *t, u32 interval)
 {
   t->interval = interval;
   t->start = clock_time();
@@ -82,7 +82,7 @@ timer_set(struct timer *t, u32 interval)
  * \sa timer_restart()
  */
 void
-timer_reset(struct timer *t)
+timer_reset(timer_t *t)
 {
   t->start += t->interval;
 }
@@ -102,7 +102,7 @@ timer_reset(struct timer *t)
  * \sa timer_reset()
  */
 void
-timer_restart(struct timer *t)
+timer_restart(timer_t *t)
 {
   t->start = clock_time();
 }
@@ -119,7 +119,7 @@ timer_restart(struct timer *t)
  *
  */
 u8
-timer_expired(struct timer *t)
+timer_expired(timer_t *t)
 {
   return (u32)(clock_time() - t->start) >= (u32)t->interval;
 }

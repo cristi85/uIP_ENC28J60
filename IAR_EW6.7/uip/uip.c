@@ -80,6 +80,7 @@
 #include "uip.h"
 #include "uipopt.h"
 #include "uip_arch.h"
+#include "serial.h"
 
 #if UIP_CONF_IPV6
 #include "uip-neighbor.h"
@@ -241,7 +242,7 @@ struct uip_stats uip_stat;
 void uip_log(char *msg);
 #define UIP_LOG(m) uip_log(m)
 #else
-#define UIP_LOG(m)
+#define UIP_LOG(m)  {Serial_PrintString(m);Serial_PrintString("\r\n");}
 #endif /* UIP_LOGGING == 1 */
 
 #if ! UIP_ARCH_ADD32

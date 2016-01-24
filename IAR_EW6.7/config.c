@@ -343,7 +343,7 @@ void Config_UART1()
   GPIO_PinAFConfig(GPIOA, GPIO_PinSource10, GPIO_AF_1);
   /* =================================== */
   USART_DeInit(USART1);
-  USART_InitStruct.USART_BaudRate = 115200;
+  USART_InitStruct.USART_BaudRate = 57600;
   USART_InitStruct.USART_WordLength = USART_WordLength_8b;
   USART_InitStruct.USART_StopBits = USART_StopBits_1;
   USART_InitStruct.USART_Parity = USART_Parity_No;
@@ -516,9 +516,9 @@ void spi_ss(unsigned char x)
   }
 } 
 
-clock_time_t clock_time(void)
+/*clock_time_t*/u32 clock_time(void)
 {
-  clock_time_t seconds;
-  seconds = (clock_time_t)current_time_sec;
-  return seconds;
+  /*u32 seconds;
+  seconds = (clock_time_t)current_time_sec;*/
+  return current_time_sec;
 } 

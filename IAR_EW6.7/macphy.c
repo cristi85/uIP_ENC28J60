@@ -351,15 +351,30 @@ void macphy_readpkt(void)
 
   if (plen > (MAX_ETH_FRAMELEN + 6 + 1)) {
     //cprintf(C" - !! - PACKET LENGTH CORRUPTION - !! -\r\n");
+    Serial_PrintString(" - !! - PACKET LENGTH CORRUPTION - !! -\r\n");
     while (1);
   }
   /* Could be off by one here due to the word alignment. If so, go ahead and accept. */
   if ((plen != ((pkt_buf[3] << 8) + pkt_buf[2] + 6)) &&
       (plen != ((pkt_buf[3] << 8) + pkt_buf[2] + 7))) {
     //cprintf(C" - !! - PACKET LENGTH MISMATCH - !! -\r\n");
+    Serial_PrintString(" - !! - PACKET LENGTH MISMATCH - !! -\r\n");
     //cprintf(C" Status Vector said 0x%02x%02x (+6/+7), plen = 0x%04x\r\n", pkt_buf[3], pkt_buf[2], plen);
+    Serial_PrintString(" Status Vector said, plen= ");
+    Serial_PrintNumber(plen);
+    Serial_PrintString("\r\n pkt_buf[3]= ");
+    Serial_PrintByte(pkt_buf[3], 1);
+    Serial_PrintString("\r\n pkt_buf[2]= ");
+    Serial_PrintByte(pkt_buf[2], 1);
     //cprintf(C" Next packet pointer = 0x%02x%02x\r\n", pkt_buf[1], pkt_buf[0]);
+    Serial_PrintString("\r\n Next packet pointer : pkt_buf[1]= ");
+    Serial_PrintByte(pkt_buf[1], 1);
+    Serial_PrintString("pkt_buf[0]= ");
+    Serial_PrintByte(pkt_buf[0], 1);
     //cprintf(C" SPI Read Pointer = 0x%04x\r\n", rptr);
+    Serial_PrintString("\r\n SPI Read Pointer = ");
+    Serial_PrintNumber(rptr);
+    Serial_PrintString("\r\n");
     macphy_readback();
   }
   /* Ethernet frame follows here */
@@ -371,6 +386,7 @@ void macphy_readpkt(void)
   /* Free up space by moving ERXRDPT forward and setting the PKTDEC bit */
   if (nxtpkt > 0xfff) {
     //cprintf(C" - !! - NEXT PACKET POINTER CORRUPTION - !! -\r\n");
+    Serial_PrintString(" - !! - NEXT PACKET POINTER CORRUPTION - !! -\r\n");
     while (1);
   }
   nxtpkt -= 1;
